@@ -9,7 +9,7 @@ public class login extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 2318467262802075447L;
-	Container container = getContentPane();
+	JFrame frame;
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
@@ -20,15 +20,22 @@ public class login extends JFrame implements ActionListener {
 
 
     login() {
-        setLayoutManager();
+    	createWindow();
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
 
     }
 
-    public void setLayoutManager() {
-        container.setLayout(null);
+    public void createWindow()
+    {
+        frame=new JFrame();
+        frame.setTitle("Login Form");
+        frame.setBounds(10, 10, 370, 600);
+        frame.getContentPane().setLayout(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
     }
 
     public void setLocationAndSize() {
@@ -44,13 +51,13 @@ public class login extends JFrame implements ActionListener {
     }
 
     public void addComponentsToContainer() {
-        container.add(userLabel);
-        container.add(passwordLabel);
-        container.add(userTextField);
-        container.add(passwordField);
-        container.add(showPassword);
-        container.add(loginButton);
-        container.add(resetButton);
+        frame.add(userLabel);
+        frame.add(passwordLabel);
+        frame.add(userTextField);
+        frame.add(passwordField);
+        frame.add(showPassword);
+        frame.add(loginButton);
+        frame.add(resetButton);
     }
 
     public void addActionEvent() {
@@ -94,12 +101,8 @@ public class login extends JFrame implements ActionListener {
 
 
     public static void main(String[] a) {
-        login frame = new login();
-        frame.setTitle("Login Form");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        
+    	new login();
 
     }
 }
